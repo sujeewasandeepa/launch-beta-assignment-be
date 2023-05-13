@@ -4,12 +4,11 @@ const Employee = require('../models/Employee');
 exports.getEmployees = async (req, res) => {
     const employees = await Employee.find();
     res.json(employees);
-    console.log('fetch worked!');
 }
 
 // this function will delete a particular employee from the database
 exports.deleteEmployee = async (req, res) => {
-    const { id } = req.body.id;
+    const id = req.body.id;
     await Employee.findByIdAndDelete(id);
     res.json({ message: "Employee deleted successfully!" });
 }
@@ -45,21 +44,21 @@ exports.filterEmployees = async (req, res) => {
 }
 
 exports.editEmployee = async (req, res) => {
-    const employee = req.body.employee;
-    await Employee.findByIdAndUpdate(employee._id, {
-        fullname: employee.fullname,
-        nameInitails: employee.nameInitails,
-        displayName: employee.displayName,
-        gender: employee.gender,
-        birthday: employee.birthday,
-        email: employee.email,
-        mobile: employee.mobile,
-        designation: employee.designation,
-        employeeType: employee.employeeType,
-        joinedDate: employee.joinedDate,
-        experience: employee.experience,
-        salary: employee.salary,
-        notes: employee.notes,
+    const employeeID = req.body.empID;
+    await Employee.findByIdAndUpdate(employeeID, {
+        fullname: req.body.fullname,
+        nameInitails: req.body.nameInitails,
+        displayName: req.body.displayName,
+        gender: req.body.gender,
+        birthday: req.body.birthday,
+        email: req.body.email,
+        mobile: req.body.mobile,
+        designation: req.body.designation,
+        employeeType: req.body.employeeType,
+        joinedDate: req.body.joinedDate,
+        experience: req.body.experience,
+        salary: req.body.salary,
+        notes: req.body.notes,
     });
     res.json({ message: "Employee updated successfully!" });
 }
