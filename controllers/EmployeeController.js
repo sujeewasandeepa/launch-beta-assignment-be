@@ -42,3 +42,23 @@ exports.filterEmployees = async (req, res) => {
     const employees = await Employee.find({ employeeType: employeeType });
     res.json(employees);
 }
+
+exports.editEmployee = async (req, res) => {
+    const employee = req.body.employee;
+    await Employee.findByIdAndUpdate(employee._id, {
+        fullname: employee.fullname,
+        nameInitails: employee.nameInitails,
+        displayName: employee.displayName,
+        gender: employee.gender,
+        birthday: employee.birthday,
+        email: employee.email,
+        mobile: employee.mobile,
+        designation: employee.designation,
+        employeeType: employee.employeeType,
+        joinedDate: employee.joinedDate,
+        experience: employee.experience,
+        salary: employee.salary,
+        notes: employee.notes,
+    });
+    res.json({ message: "Employee updated successfully!" });
+}
