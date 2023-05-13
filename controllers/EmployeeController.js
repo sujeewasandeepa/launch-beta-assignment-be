@@ -31,7 +31,7 @@ exports.addEmployee = async (req, res) => {
         salary: req.body.salary,
         notes: req.body.notes,
     });
-
+    
     await employee.save();
     res.json({ message: "Employee added successfully!" });
 }
