@@ -1,4 +1,5 @@
 const { Schema } = require('mongoose');
+const mongoose = require('mongoose');
 
 const employeeSchema = new Schema ({
     fullname: {
@@ -9,39 +10,17 @@ const employeeSchema = new Schema ({
         type: String,
         required: true,
     },
-    displayName: {
-        type: String
-    },
-    gender: {
-        type: String
-    },
-    birthday: {
-        type: Date
-    },
-    email: {
-        type: email
-    },
-    mobile: {
-        type: String
-    },
-    designation: {
-        type: String
-    },
-    employeeType: {
-        type: String
-    },
-    joinedData: {
-        type: Date
-    },
-    experience: {
-        type: String
-    },
-    salary: {
-        type: Number
-    },
-    notes: {
-        type: String
-    }
+    displayName: String,
+    gender: String,
+    birthday: Date,
+    email: String,
+    mobile: String,
+    designation: String,
+    employeeType: String,
+    joinedDate: Date,
+    experience: String,
+    salary: Number,
+    notes: String,
 });
 
 module.exports = mongoose.model('Employee', employeeSchema);
