@@ -4,6 +4,7 @@ const Employee = require('../models/Employee');
 exports.getEmployees = async (req, res) => {
     const employees = await Employee.find();
     res.json(employees);
+    console.log('fetch worked!');
 }
 
 // this function will delete a particular employee from the database

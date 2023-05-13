@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 
 const connect = require("./db");
 const routes = require("./routes/index");
@@ -6,6 +7,9 @@ const routes = require("./routes/index");
 const PORT = 5000;
 
 const app = express();
+
+// middlewares
+app.use(cors());
 
 connect();
 
